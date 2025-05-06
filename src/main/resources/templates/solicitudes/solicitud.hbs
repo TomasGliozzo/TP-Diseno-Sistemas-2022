@@ -1,0 +1,39 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Agregar nueva organizacion</h2>
+        <form class="row g-3 align-items-end" method="post" action="{{url}}">
+            <div class="col-6">
+                <label for="organizacion" class="form-label">Seleccione una organizacion</label>
+                <select id="organizacion" name="organizacion" class="form-select form-select-sm select_organizaciones"
+                        onchange="obtenerSectores('path', 'organizacion')">
+                    {{#if organizacionSelec}}
+                        <option value="{{organizacionSelec.id}}" selected>{{organizacionSelec.razonSocial}}</option>
+                    {{else}}
+                        <option selected disabled>Seleccionar...</option>
+                    {{/if}}
+
+                    {{#each organizaciones}}
+                        <option value="{{id}}">{{razonSocial}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label for="sector" class="form-label">Seleccione un sector</label>
+                <select id="sector" name="sector" class="form-select form-select-sm select_sectores">
+                    <option selected disabled>Seleccionar...</option>
+                    {{#each sectores}}
+                        <option value="{{id}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="col-2 text-center">
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">Solicitar vinculación</button>
+            </div>
+
+            <input id="path" value="{{urlSectores}}" type="hidden">
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

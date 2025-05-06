@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Trayecto</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="body-pd">
+<!--Container Main start-->
+<main class="container">
+    <section>
+        <h2>Registrar trayecto</h2>
+        <p>Complete los datos requeridos a continuacion</p>
+    </section>
+
+    <section>
+        <!-- Step 2 SEGUN TRANSPORTE-->
+        <!-- Form vehiculo-particular -->
+        <div class="form-step" id="vehiculo-particular">
+            <div class="row">
+                <h3>Añadir tramo</h3>
+
+                <form action="" method="post" class="col-4">
+                    <label class="form-label" for="vehiculo">Seleccionar tipo de vehiculo:</label>
+                    <select class="form-select form-select-sm" name="vehiculo" id="vehiculo">
+                        <option selected>Seleccionar...</option>
+                        {{#each tipos}}
+                            <option value={{this}}> {{nombre}}</option>
+                        {{/each}}
+                    </select>
+
+                    <label class="form-label" for="combustible">Seleccionar tipo de combustible:</label>
+                    <select class="form-select form-select-sm" name="combustible" id="combustible">
+                        <option selected>Seleccionar...</option>
+                        {{#each combustibles}}
+                            <option value={{this}}> {{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <!-- IF -->
+        <!-- Form Servicio Contratado -->
+        <div class="form-step" id="servicio-contratado">
+            <div class="row">
+                <h3>Añadir tramo</h3>
+                <form action="" method="post" class="col-4">
+                    <label class="form-label" for="contratado">Ingrese nombre</label>
+                    <input id="contratado" class="form-control form-control-sm"  type="text" name="contratado">
+
+                    <label class="form-label" for="contratado-descripcion">Ingrese descripcion</label>
+                    <textarea id="contratado-descripcion" class="form-control form-control-sm" name="contratado-descripcion" rows="3" placeholder="Escribe una descripcion aquí."></textarea>
+
+                    <label class="form-label" for="vehiculo">Seleccionar tipo:</label>
+                    <select class="form-select form-select-sm" name="vehiculo" id="vehiculo">
+                        <option selected>Seleccionar...</option>
+                        {{#each tipos}}
+                            <option value={{this}}> {{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <!-- Form Transporte Público -->
+        <div class="form-step" id="transporte-publico">
+            <div class="row">
+                <h3>Añadir tramo</h3>
+
+                <form action="" method="post" class="col-4">
+                    <label class="form-label" for="publico">Seleccionar tipo de transporte:</label>
+                    <select class="form-select form-select-sm" name="publico" id="publico">
+                        <option selected>Seleccionar...</option>
+                        {{#each tipos}}
+                            <option value={{this}}> {{nombre}}</option>
+                        {{/each}}
+                    </select>
+
+                    <label class="form-label" for="linea">Ingrese linea</label>
+                    <input id="linea" class="form-control form-control-sm" type="text" name="linea">
+                </form>
+            </div>
+        </div>
+
+        <!-- Form Transporte Ecológico -->
+        <div class="form-step" id="transporte-ecologico">
+            <div class="row">
+                <h3>Añadir tramo</h3>
+                <form action="" method="post" class="col-4">
+                    <label class="form-label" for="ecologico">Seleccionar tipo de transporte:</label>
+                    <select class="form-select form-select-sm" name="ecologico" id="ecologico">
+                        <option selected>Seleccionar...</option>
+                        {{#each tipos}}
+                            <option value={{this}}> {{nombre}}</option>
+                        {{/each}}
+                    </select>
+
+                    <label class="form-label" for="ecologico-descripcion">Ingrese descripción</label>
+                    <textarea id="ecologico-descripcion" class="form-control form-control-sm" name="ecologico-descripcion" rows="3" placeholder="Escribe una descripcion aquí."></textarea>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 3 AÑADIR ACOMPAÑANTE-->
+        <div class="form-step" id="form-step-3">
+            <div class="row">
+                <div class="col-6">
+                    <section class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check-tramo-compartido">
+                            <label class="form-check-label" for="check-tramo-compartido">Tramo compartido</label>
+                        </div>
+                    </section>
+
+                    <section>
+                        <form action="">
+                            <h3>Añadir participante</h3>
+                            <label class="form-label" for="nombre-participante">Ingrese nombre</label>
+                            <input id="nombre-participante" class="form-control form-control-sm"  type="text" name="nombre-participante">
+
+                            <label class="form-label" for="apellido-participante">Ingrese apellido</label>
+                            <input id="apellido-participante" class="form-control form-control-sm"  type="text" name="apellido-participante">
+
+                            <label class="form-label" for="nombre-organizacion">Ingrese organizacion</label>
+                            <input id="nombre-organizacion" class="form-control form-control-sm"  type="text" name="nombre-organizacion">
+
+                            <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap m-3">Añadir participante</button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-step" id="form-step-5">
+            <div class="row">
+                <h3>Resumen</h3>
+                <form action="trayecto-form">
+                    <p>Resumen trayecto</p>
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap m-3">Registrar trayecto</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<!--Container Main end-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

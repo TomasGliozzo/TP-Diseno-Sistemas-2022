@@ -1,0 +1,19 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Agregar sector</h2>
+        <form method="post">
+            <div class="row g-3 align-items-end">
+                <div class="col">
+                    <label class="form-label" for="nombre-sector">Ingrese nombre del sector</label>
+                    <input id="nombre-sector" class="form-control form-control-sm"  type="text"
+                           name="nombre-sector" required>
+                </div>
+
+                <div class=" col text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">Agregar sector</button>
+                </div>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

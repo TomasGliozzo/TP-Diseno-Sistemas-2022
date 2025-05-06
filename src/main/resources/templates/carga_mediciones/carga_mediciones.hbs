@@ -1,0 +1,17 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Registrar mediciones</h2>
+    </section>
+
+    <section>
+        <form action="/organizacion/{{organizacion}}/mediciones/cargar" method="post" enctype="multipart/form-data">
+            <div class="row g-3">
+                <label for="archivo-mediciones">Inserte a continuación la planilla Excel .xlsx respetando el formato.</label>
+                <input type="file" id="archivo-mediciones" name="archivo-mediciones" required
+                       accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+            </div>
+            <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap mt-5">Registrar mediciones</button>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

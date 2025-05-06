@@ -1,0 +1,30 @@
+{{#partial "contenido"}}
+    <section>
+
+            <h2 class="fw-bold text-center py-5">Crear Agente Sectorial</h2>
+
+            <form action="{{url}}" method="post">
+                <div class="mb-4">
+                    <label for="nombreApellido" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" name="nombreApellido" placeholder="Ingrese su nombre y apellido" required>
+                </div>
+                <br>
+                <div class="mb-4">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" name="usuario" value=""
+                           placeholder="Ingrese un nombre de usuario" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="contrasenia" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="contrasenia" value=""
+                           id="contrasenia" placeholder="Ingrese una contraseña valida" required>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Registrar cuenta</button>
+                </div>
+            </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

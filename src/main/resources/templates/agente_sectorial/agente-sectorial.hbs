@@ -1,0 +1,26 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Editar Agente Sectorial</h2>
+
+        <form action="{{url}}" method="post">
+            <div class="mb-4">
+                <label for="nombreApellido" class="form-label">Nombre y Apellido</label>
+                <input type="text" class="form-control" name="nombreApellido" {{#if agente}} value="{{agente.nombreApellido}}" {{/if}}
+                       placeholder="Ingrese su nombre y apellido" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="nombreUsuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" name="nombreUsuario" {{#if agente}} value="{{agente.usuario.nombre}}" {{/if}}
+                       placeholder="Ingrese su nombre de usuario" required>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap"> Guardar </button>
+            </div>
+        </form>
+
+        <a class="btn btn-sm btn-outline-primary text-nowrap" href="{{urlCambio}}">Cambiar contraseña</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

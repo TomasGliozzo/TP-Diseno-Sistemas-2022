@@ -1,0 +1,39 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Miembros</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo De Documento</th>
+                    <th>Numero de Documento</th>
+                    <th>Nombre Usuario</th>
+                    <th>Contrasenia Usuario</th>
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each miembros}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{apellido}} </td>
+                    <td> {{tipoDeDocumento}} </td>
+                    <td> {{nroDocumento}} </td>
+                    <td> {{usuario.nombre}} </td>
+                    <td> ************** </td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="/miembros/{{id}}/editar">Editar</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,8 @@
+package Factory.MedioTransporte;
+
+public enum TipoTramo {
+    TRAMO_SERVICIO_CONTRATADO,
+    TRAMO_TRANSPORTE_ECOLOGICO,
+    TRAMO_TRANSPORTE_PUBLICO,
+    TRAMO_VEHICULO_PARTICULAR
+}

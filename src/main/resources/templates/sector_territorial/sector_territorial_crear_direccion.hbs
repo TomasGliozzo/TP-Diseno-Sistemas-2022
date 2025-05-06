@@ -1,0 +1,95 @@
+{{#partial "contenido"}}
+<section>
+
+    <h2 class="fw-bold text-center py-5">Crear Direccion Sector Territorial</h2>
+
+    <form action="{{url}}" method="post">
+
+        <div class="row align-items-end">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="provincia_inicio" class="form-label"> Provincia </label>
+                    <select id="provincia_inicio" name="provincia_inicio" class="form-select form-select-sm"
+                            onchange="pedir('pathProvincia', 'provincia_inicio', '_inicio')">
+                        {{#if provincia_inicio}}
+                            <option selected value="{{provincia_inicio.id}}">  {{provincia_inicio.nombre}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion ... </option>
+                            {{#each provincias}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="municipio_inicio" class="form-label"> Municipio </label>
+                    <select id="municipio_inicio" name="municipio_inicio" class="form-select form-select-sm"
+                            onchange="pedir('pathMunicipio', 'municipio_inicio','_inicio')">
+                        {{#if municipio_inicio}}
+                            <option selected value="{{municipio_inicio.id}}">  {{municipio_inicio.nombre}} </option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion ... </option>
+                            {{#each municipios}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="localidad_inicio" class="form-label">Localidad</label>
+                    <select id="localidad_inicio" name="localidad_inicio" class="form-select form-select-sm"
+                            onchange="pedir('pathLocalidad', 'localidad_inicio','_inicio')">
+                        {{#if localidad_inicio}}
+                            <option selected value="{{localidad_inicio.id}}">  {{localidad_inicio.nombre}} </option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion ... </option>
+
+                            {{#each localidades}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="ciudad_inicio" class="form-label">Ciudad</label>
+                    <input type="text" required class="form-control form-control-sm" id="ciudad_inicio"
+                           name="ciudad_inicio" placeholder="Ciudad" required
+                        {{#if ciudad_inicio}} value="{{ciudad_inicio}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="calle_inicio" class="form-label">Calle</label>
+                    <input type="text" required class="form-control form-control-sm" id="calle_inicio"
+                           name="calle_inicio" placeholder="Calle" required
+                        {{#if calle_inicio}} value="{{calle_inicio}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="numero_inicio" class="form-label">Numero Calle</label>
+                    <input type="text" required class="form-control form-control-sm" id="numero_inicio"
+                           name="numero_inicio" placeholder="Numero Calle" required
+                           onchange="enviarCiudad('pathCalle','ciudad_inicio', 'calle_inicio', 'numero_inicio')"
+                        {{#if numero_inicio}} value="{{numero_inicio}}" {{/if}}>
+                </div>
+            </div>
+        </div>
+
+        <input id="pathProvincia" value="{{urlProvincia}}" type="hidden">
+        <input id="pathMunicipio" value="{{urlMunicipio}}" type="hidden">
+        <input id="pathLocalidad" value="{{urlLocalidad}}" type="hidden">
+        <input id="pathCiudad" value="{{urlCiudad}}" type="hidden">
+
+
+        <div class=" col text-center">
+            <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap"> Guardar </button>
+        </div>
+
+    </form>
+
+</section>
+
+{{/partial}}
+{{>layout.hbs}}

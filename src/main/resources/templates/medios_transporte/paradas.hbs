@@ -1,0 +1,37 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Paradas</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+            <tr>
+                <th> Nombre </th>
+                <th> Descripcion </th>
+                <th> Distancia Parada Anterior </th>
+                <th> Distancia Parada Siguiente</th>
+
+                <th> Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each paradas}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{descripcion}}</td>
+                    <td> {{distanciaDireccionAnterior}}</td>
+                    <td> {{distanciaDireccionSiguiente}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="paradas/{{id}}/ver"> Ver </a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="paradas/crear">Nueva Parada</a>
+        <a class="btn btn-primary" href="{{urlVolver}}">Volver</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

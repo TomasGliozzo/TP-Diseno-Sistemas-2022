@@ -1,0 +1,45 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Mi perfil</h2>
+
+        <form action="{{url}}" method="post">
+            <div class="mb-4">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" value="{{miembro-editar.nombre}}"
+                       placeholder="Ingrese su nombre" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" name="apellido" value="{{miembro-editar.apellido}}"
+                       placeholder="Ingrese su apellido" required>
+            </div>
+
+            <div class="mb-4" id="identificacion">
+                <div class="mb-4" id="tipo-documento">
+                    <label for="tipo" class="form-label">Tipo</label><br>
+                    <select name="tipoDocumento" id="seleccione">
+                        <option selected> {{miembro-editar.tipoDeDocumento}}</option>
+
+                        {{#each tipos}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="mb-4" id="documento-container">
+                    <label for="documento" class="form-label">Documento</label>
+                    <input type="text" class="form-control" name="documento" value="{{miembro-editar.nroDocumento}}"
+                           placeholder="Ingrese su documento" required>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap"> Guardar </button>
+            </div>
+        </form>
+
+        <a class="btn btn-sm btn-outline-primary text-nowrap" href="{{urlCambio}}">Cambiar contraseña</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

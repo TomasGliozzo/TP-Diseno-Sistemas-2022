@@ -1,0 +1,39 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Agentes Sectoriales</h2>
+
+        <form class="row g-3" action="{{url}}" method="post">
+            <table class="table" id="tabla">
+                <thead>
+                <tr>
+                    <th>Nombre y Apellido</th>
+
+                    <th>Sector Territorial</th>
+
+                    <th>Nombre Usuario</th>
+                    <th>Contrasenia Usuario</th>
+
+                    <th> Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{#each agentes}}
+                    <tr>
+                        <td> {{nombreApellido}} </td>
+                        <td> {{sectorTerritorial.descripcion}} </td>
+                        <td> {{usuario.nombre}} </td>
+                        <td> ************** </td>
+
+                        <td>
+                            <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap" name="eliminar" value="{{id}}">Eliminar</button>
+                            <a class="btn btn-sm btn-outline-primary text-nowrap" href="/agentes-sectoriales/{{id}}/editar">Editar</a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

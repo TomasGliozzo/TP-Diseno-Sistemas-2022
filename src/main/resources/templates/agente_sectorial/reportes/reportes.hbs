@@ -1,0 +1,95 @@
+{{#partial "contenido"}}
+        <section>
+            <h2>Reportes</h2>
+        </section>
+
+        <div class="row row-cols-1 row-cols-md-3 g-2">
+            <div class="col">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h3 class="m-0">Composición HC Total</h3>
+                    </div>
+
+                    <div class="card-body">
+                            <div>
+                                <label for="periodicidad" class="form-label">Seleccione una periodicidad</label>
+                                <select id="periodicidad" name="periodicidad" class="form-select form-select-sm">
+                                    <option selected>Seleccionar...</option>
+                                    {{#each periodicidades}}
+                                        <option value="{{this}}">{{this}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div>
+                                <label for="periodo" class="form-label">Seleccione un periodo</label>
+                                <select id="periodo" name="periodo" class="form-select form-select-sm">
+                                    <option selected>Seleccionar...</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button id="calcular-composicion" class="btn btn-sm btn-outline-primary text-nowrap">Ver composicion</button>
+                            </div>
+
+                        <div class="container">
+                            <figure id="composicion-agente-chart" class="mt-4">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h3 class="m-0">Evolución de HC total</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <figure id="evolucion-agente-chart" class="mt-4">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <input id="path_reporte_agente" value="{{urlReporte}}" type="hidden">
+
+    <script>
+
+        periodicidadSelect = document.getElementById('periodicidad')
+        periodosSelect = document.getElementById('periodo')
+
+        var periodosAnuales = []
+        {{#each periodosAnuales}}
+            periodosAnuales.push("{{this}}")
+        {{/each}}
+
+        var periodosMensuales = []
+        {{#each periodosMensuales}}
+            periodosMensuales.push("{{this}}")
+        {{/each}}
+
+        periodicidadSelect.addEventListener('change', function () {
+            periodosSelect.innerHTML = '<option selected>Seleccionar...</option>';
+            if (periodicidadSelect.value == "ANUAL") {
+                periodosAnuales.forEach(function (periodo) {
+                    var option = document.createElement('option');
+                    var valor = periodo;
+                    option.value = valor;
+                    option.text = valor;
+                    periodosSelect.appendChild(option);
+                })
+            } else {
+                periodosMensuales.forEach(function (periodo) {
+                    var option = document.createElement('option');
+                    var valor = periodo;
+                    option.value = valor;
+                    option.text = valor;
+                    periodosSelect.appendChild(option);
+                })
+            }
+        });
+
+    </script>
+{{/partial}}
+{{>layout.hbs}}

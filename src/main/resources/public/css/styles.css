@@ -1,0 +1,337 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+    --header-height: 3rem;
+    --nav-width: 68px;
+    --first-color: #27C66D;
+    --first-color-light: #DCF0E0;
+    --snd-color: #7366F1;
+    --thrd--color: #F7D519;
+    --white-color: #F2F3F2;
+    --black-color: #0C0D0D;
+    --grey-color: #D0D0D0;
+    --body-font: 'Poppins', sans-serif;
+   /* --poppins-font: 'Poppins', sans-serif;*/
+    --title-font-size: 1.3rem;
+    --subtitle-font-size: 1rem;
+    --normal-font-size: 0.8rem;
+    --z-fixed: 100
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box
+}
+
+body {
+    position: relative;
+    margin: var(--header-height) 0 0 0;
+    padding: 0 1rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    transition: .5s;
+    background-color: var(--white-color);
+}
+
+a {
+    text-decoration: none
+}
+
+.header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: var(--white-color);
+    z-index: var(--z-fixed);
+    transition: .5s
+}
+
+.header_toggle {
+    color: var(--first-color);
+    font-size: 1.5rem;
+    cursor: pointer
+}
+
+/* USER DROPDOWN */
+
+.btn-link, .btn-link:hover {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+.btn-check:focus+.btn, .btn:focus{
+    outline: 0;
+    box-shadow: none;
+    width: fit-content;
+}
+
+/* NAVBAR */
+
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: -30%;
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--white-color);
+    padding: .5rem 1rem 0 0;
+    transition: .5s;
+    z-index: var(--z-fixed)
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden
+}
+
+.nav_logo,
+.nav_link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .7rem 0 .7em 1.5rem
+}
+
+.nav_logo {
+    margin-bottom: 2rem
+}
+
+.nav_logo-icon {
+    font-size: 1.25rem;
+    color: var(--first-color)
+}
+
+.nav_logo-name {
+    color: var(--first-color);
+    font-weight: 700
+}
+
+.nav_link {
+    position: relative;
+    color: var(--black-color);
+    margin-bottom: 1.5rem;
+    transition: .3s
+}
+
+.nav_link:hover {
+    color: var(--first-color)
+}
+
+.nav_icon {
+    font-size: 1.3rem
+}
+
+.show {
+    left: 0
+}
+
+.body-pd {
+    padding-left: calc(var(--nav-width) + 1rem)
+}
+
+.active {
+    color: var(--first-color);
+    font-weight: 600;
+    background-color: var(--first-color-light);
+    border-radius: 0px 15px 15px 0px;
+}
+
+.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--first-color);
+}
+
+.height-100 {
+    height: 100vh
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        padding-left: calc(var(--nav-width) + 2rem)
+    }
+
+    .header {
+        height: calc(var(--header-height) + 1rem);
+        padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+    }
+
+    .header_img {
+        width: 40px;
+        height: 40px
+    }
+
+    .header_img img {
+        width: 45px
+    }
+
+    .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0
+    }
+
+    .show {
+        width: calc(var(--nav-width) + 156px)
+    }
+
+    .body-pd {
+        padding-left: calc(var(--nav-width) + 188px)
+    }
+}
+
+main {
+    /* min-height: calc(100vh - var(--header-height)); */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+h2 {
+    font-size:var(--title-font-size);
+}
+
+h3 {
+    font-size: var(--subtitle-font-size);
+}
+
+
+
+/* Revisar este wrap */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--main-grey);
+    min-height: 50px;
+}
+
+.card-header {
+    /* color: var(--first-color); */
+    font-weight: bold;
+}
+
+
+
+/* Buttons */
+.btn-outline-primary{
+    color: var(--first-color);
+    border-color: var(--first-color);
+}
+
+.btn-outline-primary:hover {
+    color: var(--white-color);
+    border-color: var(--first-color);
+    background-color: var(--first-color);
+}
+
+.btn-primary,  .btn-primary:hover {
+    color: var(--white-color);
+    border-color: var(--first-color);
+    background-color: var(--first-color);
+}
+
+#valorhc {
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--first-color)
+}
+
+#unidadhc {
+    font-size: large;
+    font-weight: bold;
+}
+
+img {
+    width: 300px;
+}
+
+
+
+/* Formulario Organizaicones */
+.list-group-item {
+    background-color: var(--white-color);
+    border: 1px solid var(--grey-color);
+}
+
+.list-group-item > p {
+    margin: 0;
+    margin: .5rem;
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: vertical;
+}
+
+.form-container ul {
+    margin: 20px 0px 20px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+}
+
+.form-container ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px 0px 0px;
+}
+
+
+
+/*Formularios Registrar trayecto*/
+legend {
+    font-size: var(--normal-font-size);
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.form-step {
+    width: 100%;
+    min-height: calc(100vh - (var(--header-height) + 8.5rem));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+td,th {
+    padding:15px;
+}
+
+.div_form {
+    margin-top: 24px;
+}

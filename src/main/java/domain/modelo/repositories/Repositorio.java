@@ -1,0 +1,36 @@
+package domain.modelo.repositories;
+
+import domain.modelo.repositories.daos.DAO;
+import lombok.Setter;
+
+import java.util.List;
+
+
+public class Repositorio<T> {
+    @Setter
+    protected DAO<T> dao;
+
+    public Repositorio(DAO<T> dao) {
+        this.dao = dao;
+    }
+
+    public void agregar(Object unObjeto){
+        this.dao.agregar(unObjeto);
+    }
+
+    public void modificar(Object unObjeto){
+        this.dao.modificar(unObjeto);
+    }
+
+    public void eliminar(Object unObjeto){
+        this.dao.eliminar(unObjeto);
+    }
+
+    public List<T> buscarTodos(){
+        return this.dao.buscarTodos();
+    }
+
+    public T buscar(int id){
+        return this.dao.buscar(id);
+    }
+}

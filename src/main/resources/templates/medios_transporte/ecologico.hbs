@@ -1,0 +1,45 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transporte Ecologico</h2>
+        <form class="row g-3" action="{{url}}" method="post">
+
+            <div class="row g-3 align-items-end">
+                <div class="div_form">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre" required
+                        {{#if ecologico}} value="{{ecologico.nombre}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="descripcion" class="form-label">Descripcion</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           name="descripcion" placeholder="Descripcion" required
+                        {{#if ecologico}} value="{{ecologico.descripcion}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo" class="form-label">FE</label>
+                    <select name="id_fe" id="id_fe" class="form-select form-select-sm">
+                        {{#if ecologico}}
+                            <option selected value="{{ecologico.fe.id}}">  {{ecologico.fe.nombre}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each fes}}
+                            <option value="{{id}}">{{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class=" col text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                        {{#if ecologico}} Actualizar Transporte Ecologico {{else}} Agregar Transporte Ecologico {{/if}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

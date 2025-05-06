@@ -1,0 +1,38 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transportes Particulares</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Descripcion </th>
+                    <th> Tipo de Vehiculo </th>
+                    <th> Tipo de Combustible </th>
+                    <th> FE </th>
+
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each particulares}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{descripcion}}</td>
+                    <td> {{tipoDeVehiculo}} </td>
+                    <td> {{tipoDeCombustible}}</td>
+                    <td> {{fe.nombre}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="particulares/{{id}}/editar">Editar</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="particulares/crear">Nuevo Transporte Particular</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

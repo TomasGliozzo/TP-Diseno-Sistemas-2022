@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Trayecto</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="body-pd">
+    <!--Container Main start-->
+    <main class="container">
+            <div class="form-step" id="form-step-1">
+                <div class="row">
+                    <h3>Añadir tramo</h3>   
+                    <form action="tramo-form" method="post" class="col-4">
+                        <label class="form-label" for="tramo-descripcion">Ingrese una descripcion para el tramo</label>
+                        <textarea id="tramo-descripcion" class="form-control form-control-sm" name="tramo-descripcion" rows="3" placeholder="Escribe una descripcion aquí."></textarea>
+                        
+                        <fieldset>
+                            <legend>Direccion de partida</legend>
+    
+                            <label class="form-label" for="provincia-partida">Provincia</label>
+                            <select id="provincia-partida" class="form-select form-select-sm select_organizaciones">
+                                <option selected>Seleccionar...</option>
+                                {{#each organizaciones}}
+                                    <option value={{this}}> {{nombre}}</option>
+                                {{/each}}
+                            </select>
+    
+                            <label class="form-label" for="ciudad-partida">Ciudad</label>
+                            <input id="ciudad-partida" class="form-control form-control-sm"  type="text" name="ciudad-partida">
+    
+                            <label class="form-label" for="localidad-partida">Localidad</label>
+                            <input id="localidad-partida" class="form-control form-control-sm"  type="text" name="localidad-partida">
+    
+                            <div class="row g-3">
+                                <div class="col-8">
+                                    <label class="form-label" for="calle-partida">Calle</label>
+                                    <input id="calle-partida" class="form-control form-control-sm"  type="text" name="calle-partida">    
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label" for="altura-partida">Altura</label>
+                                    <input id="altura-partida" class="form-control form-control-sm"  type="text" name="altura-partida">    
+                                </div>
+                            </div>
+                        </fieldset>
+    
+                        <fieldset>
+                            <legend>Direccion de llegada</legend>
+    
+                            <label class="form-label" for="provincia-llegada">Provincia</label>
+                            <select id="provincia-partida" class="form-select form-select-sm select_organizaciones">
+                                <option selected>Seleccionar...</option>
+                                {{#each organizaciones}}
+                                    <option value={{this}}> {{nombre}}</option>
+                                {{/each}}
+                            </select>
+    
+                            <label class="form-label" for="ciudad-llegada">Ciudad</label>
+                            <input id="ciudad-llegada" class="form-control form-control-sm"  type="text" name="ciudad-llegada">
+    
+                            <label class="form-label" for="localidad-llegada">Localidad</label>
+                            <input id="localidad-llegada" class="form-control form-control-sm"  type="text" name="localidad-llegada">
+    
+                            <div class="row g-3">
+                                <div class="col-8">
+                                    <label class="form-label" for="calle-llegada">Calle</label>
+                                    <input id="calle-llegada" class="form-control form-control-sm"  type="text" name="calle-llegada">    
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label" for="altura-llegada">Altura</label>
+                                    <input id="altura-llegada" class="form-control form-control-sm"  type="text" name="altura-llegada">    
+                                </div>
+                            </div> 
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Medio de transporte</legend>
+                            <label class="form-label" for="transporte">Seleccionar tipo de transporte:</label>
+                            <select id="transporte" class="form-select form-select-sm" name="transporte">
+                                <option selected>Seleccionar...</option>
+                                {{#each transportes}}
+                                    <option value={{this}}> {{tipo_medio_transporte}}</option>
+                                {{/each}}
+                            </select>     
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="form-step" id="form-step-4">
+                <div class="row">
+                    <h3>Resumen</h3>
+                    <form action="tramo-form">
+                        <p>Resumen tramo</p>
+                        <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap m-3">Añadir otro tramo</button>       
+                    </form>
+                </div>
+
+                <div class="form-nav p-3">
+                    <a class="go-step-2 btn btn-sm d-flex align-items-center" href="#"><i class='bx bx-left-arrow-alt'></i>Atrás</a>
+                    <a class="go-step-5 btn btn-sm d-flex align-items-center" href="#">Siguiente<i class='bx bx-right-arrow-alt'></i></a>
+                </div>
+            </div>
+
+            <div class="form-step" id="form-step-5">
+                <div class="row">
+                    <h3>Resumen</h3>
+
+                    <form action="trayecto-form">
+                        <p>Resumen trayecto</p>
+                        <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap m-3">Registrar trayecto</button>       
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--Container Main end-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

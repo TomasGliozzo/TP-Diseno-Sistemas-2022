@@ -1,0 +1,42 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Calculadora Huella de Carbono</h2>
+    </section>
+
+    <section>
+        <form id="form-hc" class="row g-3" method="post" action="calculadora">
+            <div>
+                <label for="inputState" class="form-label">Seleccione una periodicidad</label>
+                <select id="inputState" class="form-select form-select-sm" name="periodicidad">
+                    <option selected>Seleccionar...</option>
+                    {{#each periodos}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div>
+                <label for="periodo" class="form-label">Ingrese un período</label>
+                <input type="text" class="form-control form-control-sm" id="periodo" required
+                       placeholder="MM/AAAA o AAAA" name="periodo_imputacion">
+            </div>
+
+            <div>
+                <button id="calcularHC" type="submit" class="btn btn-sm btn-outline-primary text-nowrap">Calcular</button>
+            </div>
+        </form>
+    </section>
+
+    <br>
+
+    {{#if hc}}
+    <section id="resultado-hc">
+        <h5>Huella de Carbono</h5>
+        <div class="container">
+            <p>Tu huella de carbono del {{hc.periodo}} es: </p>
+            <p><span id="valorhc">{{hc.valor}}</span> <span id="unidadhc">gCO2eq</span></p>
+        </div>
+    </section>
+    {{/if}}
+{{/partial}}
+{{>layout.hbs}}

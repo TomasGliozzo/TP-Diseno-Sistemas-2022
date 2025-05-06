@@ -1,0 +1,75 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transporte Particular</h2>
+        <form class="row g-3" action="{{url}}" method="post">
+
+            <div class="row align-items-end">
+                <div class="div_form">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre" required
+                        {{#if particular}} value="{{particular.nombre}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="descripcion" class="form-label">Descripcion</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           name="descripcion" placeholder="Descripcion" required
+                        {{#if particular}} value="{{particular.descripcion}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo_vehiculo" class="form-label">Tipo de Vehiculo</label>
+                    <select id="tipo_vehiculo" name="tipo_vehiculo" class="form-select form-select-sm">
+                        {{#if particular}}
+                        <option selected value="{{particular.tipoDeVehiculo}}">  {{particular.tipoDeVehiculo}}</option>
+                        {{else}}
+                        <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each tiposDeVehiculos}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo_combustible" class="form-label">Tipo de Combustible</label>
+                    <select name="tipo_combustible" class="form-select form-select-sm">
+                        {{#if particular}}
+                            <option selected value="{{particular.tipoDeCombustible}}">{{particular.tipoDeCombustible}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each tiposDeCombustible}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo" class="form-label">FE</label>
+                    <select name="id_fe" id="id_fe" class="form-select form-select-sm">
+                        {{#if particular}}
+                            <option selected value="{{particular.fe.id}}">  {{particular.fe.nombre}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each fes}}
+                            <option value="{{id}}">{{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+            <div class=" col text-center">
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                    {{#if particular}} Actualizar Transporte Particular {{else}} Agregar Transporte Particular {{/if}}
+                </button>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,51 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Solicitudes</h2>
+    </section>
+
+    <div>
+        <form class="container" method="post" action="{{url}}">
+            <table class="table" id="tabla">
+                <thead>
+                <tr>
+                    <th> Fecha</th>
+                    <th> Miembro</th>
+                    <th> Sector</th>
+                    <th> Organizacion</th>
+
+                    <th> Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{#each solicitudes}}
+                    <tr>
+                        <td>{{fecha}}</td>
+                        <td>{{miembro.nombre}} {{miembro.apellido}}</td>
+                        <td>{{sector.nombre}}</td>
+                        <td>{{organizacion.razonSocial}}</td>
+                        <td>
+                            {{#if organizacion_boton}}
+                                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap" name="vincular" onclick = "aceptarSolicitud('{{id}}')">Vincular</button>
+                                <button type="submit" class="btn btn-sm btn-outline-danger text-nowrap" name="rechazar" onclick = "rechazarSolicitud('{{id}}')">Rechazar</button>
+                            {{/if}}
+
+                            {{#if miembro_boton}}
+                                <button type="button" class="btn btn-sm btn-outline-danger text-nowrap" onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                            {{/if}}
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+
+            <input id="solicitud_id" name="solicitud_id" type="hidden" value="">
+            <input id="accion_solicitud" name="accion_solicitud" type="hidden" value="">
+        </form>
+
+        {{#if miembro}}
+            <a class="btn btn-primary" href="solicitudes/crear">Nueva Solicitud</a>
+        {{/if}}
+    </div>
+{{/partial}}
+{{>layout.hbs}}

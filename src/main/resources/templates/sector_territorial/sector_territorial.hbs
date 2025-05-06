@@ -1,0 +1,19 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Editar Sector Territorial</h2>
+
+        <form action="{{url}}" method="post">
+            <div class="mb-4" >
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" name="descripcion" {{#if sector_territorial}} value="{{sector_territorial.descripcion}} {{/if}}"
+                       placeholder="Ingrese su descripcion" required>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap"> Guardar </button>
+            </div>
+        </form>
+
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,35 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Trayectos</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Descripcion</th>
+                    <th> Frecuencia Semanal </th>
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each trayectos}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{descripcion}}</td>
+                    <td> {{frecuenciaDeUsoSemanal}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="trayectos/{{id}}/editar">Editar</a>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="trayectos/{{id}}/tramos">Ver Tramos ></a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="trayectos/crear">Nuevo Trayecto</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

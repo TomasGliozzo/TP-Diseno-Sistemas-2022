@@ -1,0 +1,51 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Agregar FE</h2>
+        <form class="row g-3" action="{{url}}" method="post">
+            <div class="row g-3 align-items-end">
+                <div>
+                    <label for="nombre" class="form-label">Ingrese Nombre</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre"
+                        {{#if fe}} value="{{fe.nombre}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="descripcion" class="form-label">Ingrese Descripcion</label>
+                    <input type="descripcion" class="form-control form-control-sm" required
+                           id="descripcion" name="descripcion" placeholder="Descripcion"
+                        {{#if fe}} value="{{fe.descripcion}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="valor" class="form-label">Ingrese Valor</label>
+                    <input type="number" class="form-control form-control-sm" required
+                           id="valor" name="valor" placeholder="Valor"
+                        {{#if fe}} value="{{fe.valor}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="unidad" class="form-label">Selecciones Unidades</label>
+                    <select name="unidad" id="unidad">
+                        {{#if fe}}
+                            <option selected value="{{fe.unidad}}">  {{fe.unidad}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each unidades}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class=" col text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                        {{#if fe}} Actualizar FE {{else}} Agregar FE {{/if}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,115 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Parada</h2>
+        <form class="row g-3" action="{{url}}" method="post">
+
+            <div class="row align-items-end">
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        <label for="provincia" class="form-label">Provincia</label>
+                        <select id="provincia" name="provincia" class="form-select form-select-sm"
+                                onchange="pedirMunicipios('pathProvincia', 'provincia')">
+                            {{#if provincia}}
+                                <option selected value="{{provincia.id}}">  {{provincia.nombre}}</option>
+                            {{else}}
+                                <option selected disabled> Seleccione una opcion </option>
+                                {{#each provincias}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                {{/each}}
+                            {{/if}}
+                        </select>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="municipio" class="form-label"> Municipio </label>
+                        <select id="municipio" name="municipio" class="form-select form-select-sm"
+                                onchange="pedirLocalidades('pathMunicipio', 'provincia', 'municipio')">
+                            {{#if municipio}}
+                                <option selected value="{{municipio.id}}">  {{municipio.nombre}} </option>
+                            {{else}}
+                                <option selected disabled> Seleccione una opcion </option>
+
+                                {{#each municipios}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                {{/each}}
+                            {{/if}}
+                        </select>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="localidad" class="form-label">Localidad</label>
+                        <select id="localidad" name="localidad" class="form-select form-select-sm">
+                            {{#if localidad}}
+                                <option selected value="{{localidad.id}}">  {{localidad.nombre}} </option>
+                            {{else}}
+                                <option selected disabled> Seleccione una opcion </option>
+
+                                {{#each localidades}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                {{/each}}
+                            {{/if}}
+                        </select>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="calle" class="form-label">Calle</label>
+                        <input type="text" required class="form-control form-control-sm" id="calle"
+                               name="calle" placeholder="Calle" required
+                            {{#if parada}} value="{{parada.direccion.nombreCalle}}" {{/if}}>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="numero" class="form-label">Numero Calle</label>
+                        <input type="text" required class="form-control form-control-sm" id="numero"
+                               name="numero" placeholder="Numero Calle" required
+                            {{#if parada}} value="{{parada.direccion.numeroCalle}}" {{/if}}>
+                    </div>
+                </fieldset>
+
+
+                <div class="div_form">
+                    <label for="nombre" class="form-label">Nombre de la Parada</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre" required
+                        {{#if parada}} value="{{parada.nombre}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="descripcion" class="form-label">Descripcion de la Parada</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           name="descripcion" placeholder="Descripcion" required
+                        {{#if parada}} value="{{parada.descripcion}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="distancia_anterior" class="form-label">Distancia Parada Anterior</label>
+                    <input type="number" required class="form-control form-control-sm" id="distancia_anterior"
+                           name="distancia_anterior" placeholder="Distancia Parada Anterior" required
+                        {{#if parada}} value="{{parada.distanciaDireccionAnterior}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="distancia_siguiente" class="form-label">Distancia Parada Siguiente</label>
+                    <input type="number" required class="form-control form-control-sm" id="distancia_siguiente"
+                           name="distancia_siguiente" placeholder="Distancia Parada Siguiente" required
+                        {{#if parada}} value="{{parada.distanciaDireccionSiguiente}}" {{/if}}>
+                </div>
+
+                <input id="pathProvincia" value="{{urlProvincia}}" type="hidden">
+                <input id="pathMunicipio" value="{{urlMunicipio}}" type="hidden">
+                <input id="pathLocalidad" value="{{urlLocalidad}}" type="hidden">
+            </div>
+
+            <div class=" col text-center">
+                {{#if ver}}
+                    <a class="btn btn-sm btn-outline-primary text-nowrap" href="{{ver}}"> Volver </a>
+                {{else}}
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                        Agregar Parada
+                    </button>
+                {{/if}}
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,37 @@
+{{#partial "contenido"}}
+
+    <section>
+        <h2>Agregar Trayecto</h2>
+
+        <form class="row g-3" action="{{url}}" method="post">
+            <div class="row g-3 align-items-end">
+                <div>
+                    <label for="nombre" class="form-label">Ingrese Nombre</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre"
+                        {{#if trayecto}} value="{{trayecto.nombre}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="descripcion" class="form-label">Ingrese Descripcion</label>
+                    <input type="text" class="form-control form-control-sm" required
+                           id="descripcion" name="descripcion" placeholder="Descripcion"
+                        {{#if trayecto}} value="{{trayecto.descripcion}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="frecuencia" class="form-label">Ingrese Frecuencia de Uso Semanal</label>
+                    <input type="number" class="form-control form-control-sm" required
+                           id="frecuencia" name="frecuencia" placeholder="Frecuencia de Uso"
+                        {{#if trayecto}} value="{{trayecto.frecuenciaDeUsoSemanal}}" {{/if}}>
+                </div>
+            </div>
+
+            <div class="col-2 text-center">
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">Guardar</button>
+            </div>
+        </form>
+    </section>
+
+{{/partial}}
+{{>layout.hbs}}

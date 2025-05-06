@@ -1,0 +1,61 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Crear Tramo</h2>
+        <form class="row g-3" action="{{url}}" method="post">
+            <div>
+                <label for="transporte" class="form-label">Seleccione un Transporte</label>
+                <select id="transporte" name="transporte" class="form-select form-select-sm select_organizaciones"
+                        onchange="transporteSeleccionado('path', 'transporte')">
+                    {{#if transporte}}
+                        <option value="{{transporte.id}}" selected>{{transporte.nombre}}</option>
+                    {{else}}
+                        <option selected disabled>Seleccionar...</option>
+                    {{/if}}
+
+                    {{#each transportes}}
+                        <option value="{{id}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+
+            <div>
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control form-control-sm" id="descripcion" name="descripcion" required
+                       placeholder="Descripcion">
+            </div>
+
+            {{#if compartido}}
+                <div>
+                    <label for="miembros" class="form-label">Seleccione los miembros</label>
+                    <select id="miembros" name="miembros" class="form-select form-select-sm select_organizaciones" multiple>
+                        <option selected disabled>Seleccionar...</option>
+                        {{#each miembros}}
+                            <option value="{{id}}" onclick = "agregarMiembro('{{id}}')">{{nombre}} {{apellido}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <input id="lista_miembros" name="lista_miembros" value="" type="hidden">
+            {{/if}}
+
+
+            <input id="path" value="{{urlTransporte}}" type="hidden">
+
+            <div>
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">Siguiente</button>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}
+
+
+<!--
+MedioTransporte medioTransporteUtilizado;
+String descripcion;
+List<Miembro> miembrosVinculados;
+
+Direccion direccionInicio;
+Direccion direccionFin;
+-->

@@ -1,0 +1,150 @@
+{{#partial "contenido"}}
+<section>
+    <form action="{{url}}" method="post">
+        {{#if crear}}
+        <section>
+            <h2>Ubicación geográfica</h2>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label for="provincia" class="form-label">Provincia</label>
+                    <select id="provincia" name="provincia" class="form-select form-select-sm"
+                            onchange="pedirMunicipios('pathProvincia', 'provincia')">
+                        {{#if provincia}}
+                            <option selected value="{{provincia.id}}">  {{provincia.nombre}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                            {{#each provincias}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="municipio" class="form-label"> Municipio </label>
+                    <select id="municipio" name="municipio" class="form-select form-select-sm"
+                            onchange="pedirLocalidades('pathMunicipio', 'provincia', 'municipio')">
+                        {{#if municipio}}
+                            <option selected value="{{municipio.id}}">  {{municipio.nombre}} </option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+
+                            {{#each municipios}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="localidad" class="form-label">Localidad</label>
+                    <select class="form-select form-select-sm" id="localidad" name="localidad">
+                        {{#if localidad}}
+                            <option selected value="{{localidad.id}}">  {{localidad.nombre}} </option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+
+                            {{#each localidades}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="calle" class="form-label">Calle</label>
+                    <input type="text" required class="form-control form-control-sm" id="calle"
+                           name="calle" placeholder="Calle" required
+                        {{#if organizacion_editar}} value="{{organizacion_editar.ubicacionGeografica.nombreCalle}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="numero" class="form-label">Numero Calle</label>
+                    <input type="text" required class="form-control form-control-sm" id="numero"
+                           name="numero" placeholder="Numero Calle" required
+                        {{#if organizacion_editar}} value="{{organizacion_editar.ubicacionGeografica.numeroCalle}}" {{/if}}>
+                </div>
+            </fieldset>
+        </section>
+        <br>
+        {{/if}}
+
+        <section>
+            <h2>Perfil</h2>
+            <fieldset class="form-group">
+                <div>
+                    <label for="razon-social" class="form-label">Razon social</label>
+                    <input type="text" class="form-control form-control-sm" id="razon-social" required
+                           name="razon-social" placeholder="Razon Social"
+                            {{#if organizacion_editar}} value="{{organizacion_editar.razonSocial}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo-organizacion" class="form-label">Tipo de Organización</label>
+                    <select class="form-select form-select-sm" name="tipo-organizacion" id="seleccione">
+                        {{#if organizacion_editar}}
+                            <option selected value="{{organizacion_editar.tipoOrganizacion}}"> {{organizacion_editar.tipoOrganizacion}} </option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each tipos}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="clasificacion" class="form-label">Clasificacion</label>
+                    <select class="form-select form-select-sm" name="clasificacion" id="clasificacion">
+                        {{#if organizacion_editar}}
+                            <option selected value="{{organizacion_editar.clasificacionOrganizacion.id}}"> {{organizacion_editar.clasificacionOrganizacion.tipoClasificacion}} </option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each clasificaciones}}
+                            <option value="{{id}}">{{tipoClasificacion}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </fieldset>
+        </section>
+
+        <br>
+        {{#if crear}}
+            <section>
+                <h2>Cuenta</h2>
+                <fieldset class="form-group">
+                    <div>
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control form-control-sm" id="usuario" name="usuario" required
+                               placeholder="Nombre Usuario"
+                            {{#if organizacion_editar}} value="{{organizacion_editar.usuario.nombre}}" {{/if}}>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="contrasenia" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control form-control-sm" id="contrasenia" required
+                               name="contrasenia" placeholder="Contraseña"
+                            {{#if organizacion_editar}} value="{{organizacion_editar.usuario.contrasenia}}" {{/if}}>
+                    </div>
+                </fieldset>
+            </section>
+        {{/if}}
+
+        <div>
+            <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">Guardar cambios</button>
+        </div>
+
+        <input id="pathProvincia" value="{{urlProvincia}}" type="hidden">
+        <input id="pathMunicipio" value="{{urlMunicipio}}" type="hidden">
+        <input id="pathLocalidad" value="{{urlLocalidad}}" type="hidden">
+    </form>
+
+    {{#if modificar}}
+        <a class="btn btn-sm btn-outline-primary text-nowrap" href="{{urlCambio}}">Cambiar contraseña</a>
+    {{/if}}
+</section>
+{{/partial}}
+{{>layout.hbs}}

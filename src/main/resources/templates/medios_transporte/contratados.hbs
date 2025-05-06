@@ -1,0 +1,37 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transportes Contratados</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Descripcion </th>
+                    <th> Tipo Transporte </th>
+                    <th> FE </th>
+
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each contratados}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{descripcion}}</td>
+                    <td> {{tipo.tipo}} </td>
+                    <td> {{fe.nombre}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="contratados/{{id}}/editar">Editar</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="contratados/crear">Nuevo Transporte Contratado</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

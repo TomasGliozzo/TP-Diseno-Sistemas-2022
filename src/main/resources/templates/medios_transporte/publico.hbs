@@ -1,0 +1,67 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transporte Publico</h2>
+        <form class="row g-3" action="{{url}}" method="post">
+
+            <div class="row align-items-end">
+                <div class="div_form">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre" required
+                        {{#if publico}} value="{{publico.nombre}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="descripcion" class="form-label">Descripcion</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           name="descripcion" placeholder="Descripcion" required
+                        {{#if publico}} value="{{publico.descripcion}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="linea" class="form-label">Linea</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           name="linea" placeholder="Linea" required
+                        {{#if publico}} value="{{publico.linea}}" {{/if}}>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo_transporte" class="form-label">Tipo de Transporte</label>
+                    <select id="tipo_transporte" name="tipo_transporte" class="form-select form-select-sm">
+                        {{#if publico}}
+                            <option selected value="{{publico.tipoTransporte}}">  {{publico.tipoTransporte}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each tipos}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="div_form">
+                    <label for="tipo" class="form-label">FE</label>
+                    <select name="id_fe" id="id_fe" class="form-select form-select-sm">
+                        {{#if publico}}
+                            <option selected value="{{publico.fe.id}}">  {{publico.fe.nombre}}</option>
+                        {{else}}
+                            <option selected disabled> Seleccione una opcion </option>
+                        {{/if}}
+
+                        {{#each fes}}
+                            <option value="{{id}}">{{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+            <div class=" col text-center">
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                    {{#if publico}} Actualizar Transporte {{else}} Agregar Transporte {{/if}}
+                </button>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,36 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>FES</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Descripcion</th>
+                    <th> Valor </th>
+                    <th> Unidad </th>
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each fes}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{descripcion}}</td>
+                    <td> {{valor}}</td>
+                    <td> {{unidad}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="fes/{{id}}/editar">Editar</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="fes/crear">Nuevo FE</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

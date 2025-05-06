@@ -1,0 +1,38 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transporte Publico</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Descripcion </th>
+                    <th> Linea </th>
+                    <th> Tipo Transporte</th>
+
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each publicos}}
+                <tr>
+                    <td> {{nombre}} </td>
+                    <td> {{descripcion}}</td>
+                    <td> {{linea}}</td>
+                    <td> {{tipoTransporte}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="publicos/{{id}}/editar"> Editar </a>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="publicos/{{id}}/paradas"> Paradas ></a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="publicos/crear">Nuevo Transporte Publico</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

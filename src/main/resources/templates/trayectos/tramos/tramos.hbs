@@ -1,0 +1,43 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Tramos</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th> Descripcion </th>
+                    <th> Medio de Transporte </th>
+                    <th> Direccion Inicio</th>
+                    <th> Direccion Fin </th>
+                    <th> Integrantes </th>
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each tramos}}
+                <tr>
+                    <td> {{descripcion}} </td>
+                    <td> {{medioTransporteUtilizado.nombre}} </td>
+                    <td> {{direccionInicio.direccion}}</td>
+                    <td> {{direccionFin.direccion}}</td>
+                    <td>
+                        <select>
+                            {{#each miembrosVinculados}}
+                                <option>{{apellido}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="tramos/crear">Nuevo Tramo</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,41 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Miembros de {{nombre_sector}}</h2>
+    </section>
+
+    <section>
+        <form class="row g-3" action="{{url}}" method="post">
+            <table class="tabla" id="tabla">
+                <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Apellido </th>
+                    <th> Tipo Documento </th>
+                    <th> Numero Documento </th>
+
+                    <th> Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{#each miembros}}
+                    <tr>
+                        <td> {{nombre}} </td>
+                        <td> {{apellido}}</td>
+                        <td> {{tipoDeDocumento}}</td>
+                        <td> {{nroDocumento}}</td>
+
+                        <td>
+                            <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap" name="eliminar" value="{{id}}">Eliminar</button>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </form>
+
+        <a class="btn btn-sm btn-outline-primary text-nowrap" href="{{url_menu}}">Volver</a>
+    </section>
+
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,28 @@
+{{#partial "contenido"}}
+    <section>
+        <form action="{{urlCambio}}" method="post">
+            <div class="mb-4">
+                <h2>Cambiar contraseña</h2>
+            </div>
+
+            <div class="mb-4">
+                <label for="contrasenia-vieja" class="form-label">Contraseña Vieja</label>
+                <input type="password" class="form-control" name="contrasenia-vieja" id="g"
+                       placeholder="Contraseña vieja">
+            </div>
+
+            <div class="mb-4">
+                <label for="contrasenia-nueva" class="form-label">Contraseña Nueva</label>
+                <input type="password" class="form-control" name="contrasenia-nueva" id="contrasenia-nueva"
+                       placeholder="Contraseña nueva">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap"> Cambiar </button>
+            </div>
+        </form>
+
+        <a class="btn btn-sm btn-outline-primary text-nowrap" href="{{urlVolver}}">volver</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,37 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Agregar Contacto</h2>
+
+        <form class="row g-3" action="{{url}}" method="post">
+            <div class="row g-3 align-items-end">
+                <div>
+                    <label for="nombre" class="form-label">Ingrese Nombre</label>
+                    <input type="text" required class="form-control form-control-sm"
+                           id="nombre" name="nombre" placeholder="Nombre"
+                            {{#if contacto}} value="{{contacto.nombre}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="email" class="form-label">Ingrese Email</label>
+                    <input type="email" class="form-control form-control-sm" required
+                           id="email" name="email" placeholder="Email"
+                            {{#if contacto}} value="{{contacto.email}}" {{/if}}>
+                </div>
+
+                <div>
+                    <label for="telefono" class="form-label">Ingrese Telefono</label>
+                    <input type="text" class="form-control form-control-sm" required
+                           id="telefono" name="telefono" placeholder="telefono"
+                            {{#if contacto}} value="{{contacto.telefono}}" {{/if}}>
+                </div>
+
+                <div class=" col text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                        {{#if contacto}} Actualizar Contacto {{else}} Agregar Contacto {{/if}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

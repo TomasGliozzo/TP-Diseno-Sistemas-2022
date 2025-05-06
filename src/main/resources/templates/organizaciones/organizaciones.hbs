@@ -1,0 +1,40 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Organizaciones</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th>Razon Social</th>
+                    <th>Tipo de Organizacion</th>
+                    <th>Clasificacion Organizacion</th>
+                    <th>Sector Territorial</th>
+                    <th>Nombre Usuario</th>
+                    <th>Contrasenia Usuario</th>
+                    <th> Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {{#each organizaciones}}
+                <tr>
+                    <td> {{razonSocial}} </td>
+                    <td> {{tipoOrganizacion}} </td>
+                    <td> {{clasificacionOrganizacion.tipoClasificacion}} </td>
+                    <td> {{sectorTerritorialMunicipal.descripcion}} </td>
+                    <td> {{usuario.nombre}} </td>
+                    <td> **************** </td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="/organizaciones/{{id}}/editar">Editar</a>
+                        <button type="button" class="btn btn-sm btn-outline-primary text-nowrap"
+                                onclick = "confirmarEliminacion('{{id}}')">Eliminar</button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="/organizaciones/crear">Nuevo Organizacion</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

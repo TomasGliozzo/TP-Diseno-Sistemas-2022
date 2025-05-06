@@ -1,0 +1,24 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Mis Organizaciones</h2>
+
+        <table class="table" id="tabla">
+            <thead>
+                <tr>
+                    <th>Organizacion</th>
+                    <th>Sector</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each sectores}}
+                    <tr>
+                        <td> {{organizacion.razonSocial}} </td>
+                        <td> {{nombre}} </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

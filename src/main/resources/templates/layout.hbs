@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi impacto ambiental</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/miembro.css">
+    <link rel="stylesheet" type="text/css" href="/css/mensaje.css">
+    <link rel="stylesheet" type="text/css" href="/css/eliminar.css">
+</head>
+
+<body id="body-pd">
+<header class="header" id="header">
+    <div class="header_toggle">
+        <i class='bx bx-menu' id="header-toggle"></i>
+    </div>
+
+    <div class="dropdown-center">
+        <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Usuario
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                {{#if miembro}}
+                    <a class="dropdown-item" href="/miembro/{{miembro}}/editar">Mi perfil</a>
+                {{/if}}
+
+                {{#if organizacion}}
+                    <a class="dropdown-item" href="/organizacion/{{organizacion}}/editar">Mi perfil</a>
+                {{/if}}
+
+                {{#if agente}}
+                    <a class="dropdown-item" href="/agente-sectorial/{{agente}}/editar">Mi perfil</a>
+                {{/if}}
+            </li>
+            <li>
+                <form action="/login/logout" method="post">
+                    <button class="dropdown-item" type="submit">Cerrar sesión</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div>
+            <a href="#" class="nav_logo">
+                <i class='bx bxs-leaf nav_logo-icon'></i>
+                <span class="nav_logo-name">Mi impacto ambiental</span>
+            </a>
+
+            <div class="nav_list">
+                {{#if miembro}}
+                    <a class="nav_link" href = "/miembro/{{miembro}}/index">
+                        <i class='bx bx-home-alt nav_icon'></i>
+                        <span class="nav_name">Home</span>
+                    </a>
+
+                    <a href="/miembro/{{miembro}}/mis_organizaciones" class="nav_link">
+                        <i class='bx bx-briefcase nav_icon'></i>
+                        <span class="nav_name">Mis organizaciones</span>
+                    </a>
+
+                    <a href="/miembro/{{miembro}}/trayectos" class="nav_link">
+                        <i class='bx bx-bus nav_icon'></i>
+                        <span class="nav_name">Registrar trayecto</span>
+                    </a>
+
+                    <a href="/miembro/{{miembro}}/recomendaciones" class="nav_link">
+                        <i class='bx bx-book-open nav_icon'></i>
+                        <span class="nav_name">Recomendaciones</span>
+                    </a>
+
+                    <a href="/miembro/{{miembro}}/calculadora" class="nav_link">
+                        <i class='bx bx-calculator nav_icon'></i>
+                        <span class="nav_name">Calculadora</span>
+                    </a>
+
+                    <a class="nav_link" href = "/miembro/{{miembro}}/solicitudes">
+                        <i class='bx bx-user-plus nav_icon'></i>
+                        <span class="nav_name">Solicitudes</span>
+                    </a>
+                {{/if}}
+
+                {{#if organizacion}}
+                    <a class="nav_link" href = "/organizacion/{{organizacion}}/index">
+                        <i class='bx bx-home-alt nav_icon'></i>
+                        <span class="nav_name">Home</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/sectores" class="nav_link">
+                        <i class='bx bx-buildings nav_icon'></i>
+                        <span class="nav_name">Mis sectores</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/contactos" class="nav_link">
+                        <i class='bx bxs-contact nav_icon'></i>
+                        <span class="nav_name">Mis contactos</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/mediciones" class="nav_link">
+                        <i class='bx bx-edit nav_icon'></i>
+                        <span class="nav_name">Registrar mediciones</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/reporte" class="nav_link">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Reportes</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/reporte_composicion" class="nav_link">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Reportes</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/recomendaciones" class="nav_link">
+                        <i class='bx bx-book-open nav_icon'></i>
+                        <span class="nav_name">Recomendaciones</span>
+                    </a>
+
+                    <a href="/organizacion/{{organizacion}}/calculadora" class="nav_link">
+                        <i class='bx bx-calculator nav_icon'></i>
+                        <span class="nav_name">Calculadora</span>
+                    </a>
+
+                    <a class="nav_link" href = "/organizacion/{{organizacion}}/solicitudes">
+                        <i class='bx bx-user-plus nav_icon'></i>
+                        <span class="nav_name">Solicitudes</span>
+                    </a>
+                {{/if}}
+
+                {{#if admin}}
+                    <a class="nav_link" href = "/fes">
+                        <i class='bx bx-book-open nav_icon'></i>
+                        <span class="nav_name">FE</span>
+                    </a>
+
+                    <a class="nav_link" href = "/organizaciones">
+                        <i class='bx bx-buildings nav_icon'></i>
+                        <span class="nav_name">Organizaciones</span>
+                    </a>
+
+                    <a class="nav_link" href = "/miembros">
+                        <i class='bx bx-user-plus nav_icon'></i>
+                        <span class="nav_name">Miembros</span>
+                    </a>
+
+                    <a href="/transportes/ecologicos" class="nav_link">
+                        <i class='bx bx-bus nav_icon'></i>
+                        <span class="nav_name">Ecologicos</span>
+                    </a>
+
+                    <a href="/transportes/contratados" class="nav_link">
+                        <i class='bx bx-bus nav_icon'></i>
+                        <span class="nav_name">Contratados</span>
+                    </a>
+
+                    <a href="/transportes/particulares" class="nav_link">
+                        <i class='bx bx-bus nav_icon'></i>
+                        <span class="nav_name">Particulares</span>
+                    </a>
+
+                    <a href="/transportes/publicos" class="nav_link">
+                        <i class='bx bx-bus nav_icon'></i>
+                        <span class="nav_name">Publicos</span>
+                    </a>
+
+                    <a class="nav_link" href = "/sectores-territoriales">
+                        <i class='bx bx-buildings nav_icon'></i>
+                        <span class="nav_name">Sectores Territoriales</span>
+                    </a>
+
+                    <a class="nav_link" href = "/agentes-sectoriales">
+                        <i class='bx bx-user-plus nav_icon'></i>
+                        <span class="nav_name">Agentes Sectoriales</span>
+                    </a>
+                {{/if}}
+
+
+                {{#if agente}}
+                    <a class="nav_link" href = "/agente-sectorial/{{agente}}/index">
+                        <i class='bx bx-home-alt nav_icon'></i>
+                        <span class="nav_name">Home</span>
+                    </a>
+
+                    <a href="/agente-sectorial/{{agente}}/sector-territorial" class="nav_link">
+                        <i class='bx bx-briefcase nav_icon'></i>
+                        <span class="nav_name">Mi Sector Territorial</span>
+                    </a>
+
+                    <a href="/agente-sectorial/{{agente}}/reportes" class="nav_link">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Reportes</span>
+                    </a>
+
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+{{#if mensaje}}
+<div class="alert" style="background-color: {{#if succes}} #27C66D; {{else}}#f44336; {{/if}} {{mensaje}}">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    {{#if succes}} Success! {{else}} Danger! {{/if}} {{mensaje}}
+</div>
+{{/if}}
+
+
+<!-- Container Main start -->
+<main class="container">
+    {{#block "contenido"}}
+    {{/block}}
+</main>
+<!-- Container Main end -->
+
+
+{{#if eliminar}}
+<div class="modalEliminar modal" id="modalEliminar">
+    <div class="modalContent">
+        <input id="eliminar" type="hidden" value="">
+        <input id="urlEliminar" type="hidden" value="{{urlEliminar}}">
+
+        <button type="button" name="button" class="btn-close-modal" onclick="cerrarModal()" >&times;</button>
+        <p>¿Desea eliminar?</p>
+        <br>
+        <div class="">
+            <button type="button" name="button" class="btn-rojo" onclick="eliminar()">Eliminar</button>
+            <button type="button" name="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/organizacion.js"></script>
+<script src="/js/direccion.js"></script>
+<script src="/js/eliminar.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Reportes</h2>
+    </section>
+
+    <div class="row row-cols-1 row-cols-md-3 g-2" id="reporte_organizacion">
+        <!--
+        <div class="col">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h3 class="m-0">Composición HC total de una organización</h3>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <figure id="composicion-organizacion-chart" class="mt-4">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <div class="col" style="width:70%;">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h3 class="m-0">Evolución de HC total de una organización</h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="container">
+                        <figure id="evolucion-organizacion-chart" class="mt-4">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input id="path_reporte_organizacion" value="{{urlReporte}}" type="hidden">
+{{/partial}}
+{{>layout.hbs}}

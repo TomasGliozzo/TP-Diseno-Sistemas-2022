@@ -1,0 +1,67 @@
+#modalEliminar{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  font-size: 18px;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0);
+}
+
+.modalContent{
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  box-shadow: 5px 10px 8px #888888;
+  width: 80%;
+}
+
+.btn-close-modal {
+  cursor:pointer;
+  float:right;
+  background-color: grey;
+  border:0px;
+  color:white;
+  padding: 7px;
+  border-radius: 5px;
+  font-size:16px;
+}
+
+.btn-cancelar{
+  border:0px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: grey;
+  border-radius: 5px;
+  color:white;
+  cursor:pointer;
+
+}
+
+.btn-rojo{
+  border:0px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: grey;
+  border-radius: 5px;
+  background-color:rgb(199, 13, 0);
+  cursor:pointer;
+  color:white;
+}
+
+.btn-verde{
+  border:0px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: grey;
+  border-radius: 5px;
+  margin:5px;
+  background-color:rgb(68, 168, 68);
+  cursor:pointer;
+  color:white;
+}

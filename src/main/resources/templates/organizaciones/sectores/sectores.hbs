@@ -1,0 +1,29 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Mis sectores</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#each sectores}}
+                <tr>
+                    <td>{{nombre}}</td>
+
+                    <td>
+                        <a class="btn btn-sm btn-outline-primary text-nowrap" href="sectores/{{id}}/editar">Editar</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <a class="btn btn-sm btn-outline-primary text-nowrap" href="sectores/crear">Nuevo sector</a>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,62 @@
+{{#partial "contenido"}}
+    <section>
+        <h2>Transporte Contratado</h2>
+        <form class="row g-4" action="{{url}}" method="post">
+
+            <div class="row g-4 align-items-end">
+                <div>
+                    <div class="div_form">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" required class="form-control form-control-sm"
+                               id="nombre" name="nombre" placeholder="Nombre" required
+                            {{#if contratado}} value="{{contratado.nombre}}" {{/if}}>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <input type="text" required class="form-control form-control-sm"
+                               name="descripcion" placeholder="Descripcion" required
+                            {{#if contratado}} value="{{contratado.descripcion}}" {{/if}}>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="id_tipo" class="form-label">Tipo de Vehiculo</label>
+                        <select id="id_tipo" name="id_tipo" class="form-select form-select-sm">
+                            {{#if contratado}}
+                                <option selected value="{{contratado.tipo.id}}">  {{contratado.tipo.tipo}}</option>
+                            {{else}}
+                                <option selected disabled> Seleccione una opcion </option>
+                            {{/if}}
+
+                            {{#each tiposTransportesContratados}}
+                                <option value="{{id}}">{{tipo}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="div_form">
+                        <label for="tipo" class="form-label">FE</label>
+                        <select name="id_fe" id="id_fe" class="form-select form-select-sm">
+                            {{#if contratado}}
+                                <option selected value="{{contratado.fe.id}}">  {{contratado.fe.nombre}}</option>
+                            {{else}}
+                                <option selected disabled> Seleccione una opcion </option>
+                            {{/if}}
+
+                            {{#each fes}}
+                                <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+
+                <div class=" col text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">
+                        {{#if contratado}} Actualizar Transporte Contratado {{else}} Agregar Transporte Contratado {{/if}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+{{/partial}}
+{{>layout.hbs}}

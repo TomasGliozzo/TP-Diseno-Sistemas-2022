@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/estilosregistro.css">
+    <link rel="stylesheet" type="text/css" href="/css/mensaje.css">
+</head>
+
+<body>
+    {{#if mensaje}}
+        <div class="alert" style="background-color: {{#if succes}} #27C66D; {{else}}#f44336; {{/if}} {{mensaje}}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{#if succes}} Success! {{else}} Danger! {{/if}} {{mensaje}}
+        </div>
+    {{/if}}
+
+    <div class="container bg-white w-50 my-3 rounded-3 shadow">
+        <div class="row align-items-stretch">
+            <div class="col p-5">
+                <div class="text-center">
+                    <i class='bx bxs-leaf logo-icon'></i>
+                </div>
+
+                <h2 class="fw-bold text-center py-5">Registrar cuenta</h2>
+
+                <form action="/registro" method="post">
+                    <div class="mb-4">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido" required>
+                    </div>
+
+                    <div class="mb-4" id="identificacion">
+                        <div class="mb-4" id="tipo-documento">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <select name="tipoDocumento" id="seleccione">
+                                <option selected disabled>Seleccionar...</option>
+                                {{#each tipos}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="mb-4" id="documento-container">
+                            <label for="documento" class="form-label">Documento</label>
+                            <input type="text" class="form-control" name="documento" placeholder="Ingrese su documento" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" name="usuario" value=""
+                               placeholder="Ingrese un nombre de usuario" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="contrasenia" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="contrasenia" value=""
+                               id="contrasenia" placeholder="Ingrese una contraseña valida" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Registrar cuenta</button>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div>
+    <!--Container Main end-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
